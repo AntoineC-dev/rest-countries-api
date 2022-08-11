@@ -2,6 +2,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/app.html", "./src/**/*.{svelte,ts}"],
+  darkMode: "class",
   theme: {
     colors: {
       transparent: "transparent",
