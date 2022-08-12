@@ -23,13 +23,13 @@
   <title>Frontend Mentor | REST Countries API</title>
 </svelte:head>
 
-<main class="px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
+<main class="px-4 sm:px-6 py-6 sm:py-8 md:py-12">
   <div class="flex items-center flex-wrap sm:flex-nowrap container mx-auto justify-between gap-8">
     <SearchInput on:search={onSearch} />
     <RegionSelect on:filter={onFilter} />
   </div>
   <div
-    class="container mx-auto my-8 lg:my-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center gap-8"
+    class="container mx-auto my-8 md:my-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center gap-8 md:gap-12 lg:gap-16"
   >
     {#each filteredCountries as country (country.name)}
       <CountryCard {country} />
