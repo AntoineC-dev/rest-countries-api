@@ -9,7 +9,7 @@ export type LocalStorageKey = "theme";
 export interface CountrySimple {
   flag: string; // data.flags.png
   name: string; // data.name.official
-  population: number; // data.population
+  population: string; // data.population
   region: string; // data.region
   capital: string; // data.capital[0]
 }
