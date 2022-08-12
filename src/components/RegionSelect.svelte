@@ -10,7 +10,7 @@
     dispatch("filter", { region: "" });
     selected = "";
   };
-  const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
+  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const dispatch = createEventDispatcher<{ filter: { region: string } }>();
   const onRegionSelected = (region: string) => {
     dispatch("filter", { region });
@@ -45,11 +45,12 @@
     type="button"
     aria-label="Clear selected region"
     on:click={onClear}
+    disabled={open || !selected}
     class:opacity-0={open || !selected}
     class:pointer-events-none={open || !selected}
-    class="absolute right-0 top-full translate-y-1 text-xs text-blue-300/30 dark:text-white/30 flex items-center gap-2 p-2 transition-opacity"
+    class="absolute right-0 top-1/2 sm:top-full -translate-y-1/2 sm:translate-y-0 translate-x-full sm:translate-x-0 text-xs text-blue-300/30 dark:text-white/30 flex items-center gap-2 p-1 transition-opacity"
   >
-    <span>Clear selection</span>
+    <span>Clear</span>
     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 aspect-auto" viewBox="0 0 20 20" fill="currentColor">
       <path
         fill-rule="evenodd"

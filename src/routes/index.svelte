@@ -2,18 +2,21 @@
   import SearchInput from "../components/SearchInput.svelte";
   import RegionSelect from "../components/RegionSelect.svelte";
   import CountryCard from "../components/CountryCard.svelte";
-  import type { CountrySimple } from "src/types";
+  import type { CountrySimple } from "../types";
+  import { filterCountries } from "../helpers";
 
   export let countries: CountrySimple[];
-  console.log(countries);
+  let filters = { name: "", region: "" };
 
-  const onSearch = (e: CustomEvent<{ str: string }>) => {
-    console.log(e.detail.str);
+  const onSearch = (e: CustomEvent<{ name: string }>) => {
+    filters.name = e.detail.name;
   };
 
   const onFilter = (e: CustomEvent<{ region: string }>) => {
-    console.log(e.detail.region);
+    filters.region = e.detail.region;
   };
+
+  $: filteredCountries = filterCountries(countries, filters);
 </script>
 
 <svelte:head>
@@ -21,14 +24,14 @@
 </svelte:head>
 
 <main class="px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
-  <div class="flex items-center flex-wrap container mx-auto justify-between gap-8">
+  <div class="flex items-center flex-wrap sm:flex-nowrap container mx-auto justify-between gap-8">
     <SearchInput on:search={onSearch} />
     <RegionSelect on:filter={onFilter} />
   </div>
   <div
     class="container mx-auto my-8 lg:my-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center gap-8"
   >
-    {#each countries as country (country.name)}
+    {#each filteredCountries as country (country.name)}
       <CountryCard {country} />
     {/each}
   </div>
