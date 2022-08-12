@@ -4,6 +4,10 @@ module.exports = {
   content: ["./src/app.html", "./src/**/*.{svelte,ts}"],
   darkMode: "class",
   theme: {
+    screens: {
+      xs: "480px",
+      ...defaultTheme.screens,
+    },
     colors: {
       transparent: "transparent",
       current: "currentColor",
