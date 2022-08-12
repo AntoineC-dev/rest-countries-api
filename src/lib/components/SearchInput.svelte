@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-  import { debounce } from "../helpers";
+  import { debounce } from "$lib/helpers";
 
   let value: string = "";
 

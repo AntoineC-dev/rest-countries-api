@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
-import type { ThemeStore } from "../types";
-import { getInitialTheme, persistData } from "../helpers";
+import type { ThemeStore } from "$lib/types";
+import { getInitialTheme, persistData } from "$lib/helpers";
 
 export const theme = writable<ThemeStore>(getInitialTheme("light"));
 theme.subscribe((data) => persistData<ThemeStore>({ data, key: "theme" }));

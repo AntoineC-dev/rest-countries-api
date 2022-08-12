@@ -1,4 +1,4 @@
-import type { CountrySimple } from "../types";
+import type { CountrySimple } from "$lib/types";
 
 export const filterCountries = (
   countries: CountrySimple[],

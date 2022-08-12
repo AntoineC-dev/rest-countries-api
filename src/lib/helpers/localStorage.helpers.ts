@@ -1,5 +1,5 @@
 import { browser } from "$app/env";
-import type { LocalStorageKey, ThemeMode, ThemeStore } from "../types";
+import type { LocalStorageKey, ThemeMode, ThemeStore } from "$lib/types";
 
 export const getInitialData = <T>({ defaultValue, key }: { defaultValue: T; key: LocalStorageKey }) => {
   if (!browser) return defaultValue;

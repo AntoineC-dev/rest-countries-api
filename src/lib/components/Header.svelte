@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { theme, toggleTheme } from "../stores/theme.store";
+  import { theme, toggleTheme } from "$lib/stores";
 </script>
 
 <header class="px-4 sm:px-6 py-6 bg-white dark:bg-blue-100 shadow-custom">
