@@ -1,7 +1,7 @@
 <script lang="ts">
-  import SearchInput from "$lib/components/SearchInput.svelte";
-  import RegionSelect from "$lib/components/RegionSelect.svelte";
-  import CountryCard from "$lib/components/CountryCard.svelte";
+  import SearchInput from "$components/SearchInput.svelte";
+  import RegionSelect from "$components/RegionSelect.svelte";
+  import CountryCard from "$components/CountryCard.svelte";
   import type { CountrySimple } from "$lib/types";
   import { filterCountries } from "$lib/helpers";
 
