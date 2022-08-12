@@ -1,8 +1,8 @@
 <script lang="ts">
   import "../app.css";
   import { onMount } from "svelte";
-  import { theme } from "../stores/theme.store";
-  import Header from "../components/Header.svelte";
+  import { theme } from "$lib/stores";
+  import Header from "$lib/components/Header.svelte";
 
   // Handle light/dark theme
   let root: HTMLElement;

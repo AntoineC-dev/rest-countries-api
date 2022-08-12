@@ -1,7 +1,8 @@
-/** @type {import('@sveltejs/kit').RequestHandler} */
-import { getAllCountries } from "../api/requests.api";
+import type { RequestHandler } from "@sveltejs/kit";
+import type { CountrySimple } from "$lib/types";
+import { getAllCountries } from "$lib/api";
 
-export const GET = async () => {
+export const GET: RequestHandler<{}, { countries: CountrySimple[] }> = async () => {
   const countries = await getAllCountries();
   return { body: { countries } };
 };
