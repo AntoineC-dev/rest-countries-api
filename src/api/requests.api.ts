@@ -12,7 +12,7 @@ export const getAllCountries = async () => {
       countries.push({
         capital: capital[0],
         flag: flags.png,
-        name: name.official,
+        name: name.common,
         population: nf.format(population), // Format from 123456789 to 123,456,789
         region,
       });
