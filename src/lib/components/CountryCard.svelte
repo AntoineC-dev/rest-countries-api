@@ -2,7 +2,8 @@
   import type { CountrySimple } from "$lib/types";
 
   export let country: CountrySimple;
-  const href = `/countries/${country.name.toLowerCase()}`;
+  const validUrlName = country.name.replaceAll(" ", "_").toLowerCase();
+  const href = `/countries/${validUrlName}`;
 </script>
 
 <a {href} class="flex flex-col max-w-sm w-full bg-white dark:bg-blue-100 shadow-custom rounded-md overflow-hidden">
