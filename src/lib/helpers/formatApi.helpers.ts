@@ -5,7 +5,7 @@ export const formatCountrySimple = (data: any): CountrySimple => {
   let nf = new Intl.NumberFormat("en-US");
   return {
     capital: data.capital[0],
-    flag: data.flags.png,
+    flag: data.flags.svg,
     name: data.name.common,
     population: nf.format(data.population), // Format from 123456789 to 123,456,789
     region: data.region,
