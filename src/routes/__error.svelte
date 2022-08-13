@@ -17,8 +17,8 @@
   <div class="flex flex-col gap-12 items-center">
     <h2 class="text-2xl">{error}</h2>
     <p class="text-center max-w-prose">
-      We are sorry that you could not get this data for you. Please try again later and if the service is still down
-      feel free to send us a report at this address
+      It seems like we could not access this piece of data right now. Please try again later and if the service is still
+      down feel free to send us a report by clicking on "Send Report" below.
     </p>
     <div class="flex items-center gap-4">
       <button
