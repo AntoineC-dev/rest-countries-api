@@ -5,7 +5,7 @@
   let value: string = "";
 
   const dispatch = createEventDispatcher<{ search: { name: string } }>();
-  const onChange = debounce(() => dispatch("search", { name: value.trim() }), 500); // Runs only if user stops typing for 500ms
+  const onChange = debounce(() => dispatch("search", { name: value.trim() }), 250); // Runs only if user stops typing for 500ms
   $: value && onChange();
 
   const onClear = () => {
