@@ -25,6 +25,6 @@ export const getCountryByName = async (param: string) => {
     const countryComplete = await formatContryComplete(data, api);
     return countryComplete;
   } catch (_) {
-    throw new Error("Sorry! We could not access the API.");
+    throw new Error(`Sorry! We could not access the data for ${param} on the API.`);
   }
 };
