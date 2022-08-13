@@ -48,7 +48,7 @@
         {#if country.borderCountries.length !== 0}
           <div class="flex flex-col text-sm leading-none mt-12 gap-4">
             <h3 class="text-lg leading-none">Border Countries:</h3>
-            <div class="flex items-center gap-2 flex-wrap">
+            <div class="flex items-center gap-2 md:gap-3 flex-wrap">
               {#each country.borderCountries as borderCountry (borderCountry)}
                 <a
                   href={`/countries/${borderCountry}`}
