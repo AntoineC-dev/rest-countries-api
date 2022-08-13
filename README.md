@@ -36,6 +36,8 @@ Users should be able to:
 
 ![REST Countries API | Mobile version](./fullpage-mobile.png)
 
+![REST Countries API | Mobile dark version](./fullpage-mobile-darkmode.png)
+
 ### Links
 
 - Solution URL: [Go to solution](https://www.frontendmentor.io/solutions/rest-countries-api-w-svelkit-ts-tailwind-axios-and-ssr-prefetching-i4wDMW6EGE)
