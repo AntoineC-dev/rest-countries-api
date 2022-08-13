@@ -18,7 +18,7 @@
     type="button"
     aria-label="{open ? 'Close' : 'Open'} region dropdown"
     on:click={onToggle}
-    class="flex items-center justify-between px-6 w-52 h-[3.25rem] bg-white dark:bg-blue-100 shadow-custom xs:max-w-md rounded-md"
+    class="flex items-center justify-between px-6 w-52 h-[3.25rem] bg-white dark:bg-blue-100 shadow-custom xs:max-w-md rounded-md ring-focus"
   >
     <span>{!$filters.region ? "Filter by Region" : $filters.region}</span>
     <svg
@@ -42,7 +42,7 @@
     disabled={open || !$filters.region}
     class:opacity-0={open || !$filters.region}
     class:pointer-events-none={open || !$filters.region}
-    class="absolute right-0 top-1/2 sm:top-full -translate-y-1/2 sm:translate-y-0 translate-x-full sm:translate-x-0 text-xs text-blue-300/30 dark:text-white/30 flex items-center gap-2 p-1 transition-opacity"
+    class="absolute right-0 top-1/2 sm:top-full -translate-y-1/2 sm:translate-y-0 translate-x-full sm:translate-x-0 text-xs text-blue-300/30 dark:text-white/30 flex items-center gap-2 p-1 transition-opacity ring-focus"
   >
     <span>Clear</span>
     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 aspect-auto" viewBox="0 0 20 20" fill="currentColor">
@@ -62,9 +62,10 @@
       <button
         type="button"
         aria-label="Select {region}"
+        disabled={!open}
         on:click={() => onRegionSelected(region)}
         class:opacity-0={!open}
-        class="leading-none px-6 py-2 text-start hover:bg-gray-200/10 hover:dark:bg-blue-200 transition-all duration-300"
+        class="leading-none px-6 py-2 text-start hover:bg-gray-200/10 hover:dark:bg-blue-200 transition-all duration-300 ring-focus"
         >{region}</button
       >
     {/each}

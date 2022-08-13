@@ -29,10 +29,10 @@
     aria-label="Search for a country by name"
     bind:value
     placeholder="Search for a country..."
-    class="bg-transparent text-sm outline-none p-2 w-full"
+    class="bg-transparent text-sm outline-none p-2 w-full ring-focus rounded-md"
   />
   {#if !!value}
-    <button type="button" aria-label="Clear search bar" on:click={onClear} class="p-2">
+    <button type="button" aria-label="Clear search bar" on:click={onClear} class="p-2 ring-focus">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 aspect-auto" viewBox="0 0 20 20" fill="currentColor">
         <path
           fill-rule="evenodd"

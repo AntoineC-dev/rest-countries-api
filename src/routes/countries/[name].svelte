@@ -14,7 +14,7 @@
       aria-label="Go back to previous page"
       type="button"
       on:click={() => window.history.back()}
-      class="self-start flex items-center gap-2 bg-white dark:bg-blue-100 rounded-sm px-4 py-1 font-light shadow-custom"
+      class="btn self-start px-4 py-1 font-light"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="w-4 aspect-auto" viewBox="0 0 20 20" fill="currentColor">
         <path
@@ -50,11 +50,7 @@
             <h3 class="text-lg leading-none">Border Countries:</h3>
             <div class="flex items-center gap-2 md:gap-3 flex-wrap">
               {#each country.borderCountries as borderCountry (borderCountry)}
-                <a
-                  href={`/countries/${borderCountry}`}
-                  class="bg-white dark:bg-blue-100 rounded-sm px-4 py-1 text-sm font-light shadow-custom"
-                  >{borderCountry}</a
-                >
+                <a href={`/countries/${borderCountry}`} class="btn px-4 py-1 text-sm font-light">{borderCountry}</a>
               {/each}
             </div>
           </div>

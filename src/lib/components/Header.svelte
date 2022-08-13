@@ -6,13 +6,13 @@
 <header class="px-4 sm:px-6 md:px-8 py-6 bg-white dark:bg-blue-100 shadow-custom">
   <LoadingOverlay />
   <div class="mx-auto container flex justify-between items-center text-sm md:text-xl xl:max-w-screen-xl">
-    <a href="/">
+    <a href="/" class="ring-focus">
       <h1 class="font-bold">Where in the world?</h1>
     </a>
     <button
       on:click={toggleTheme}
       type="button"
-      class="flex items-center leading-none p-2 font-light -mx-2 text-sm md:text-base"
+      class="btn rounded-md leading-none p-2 font-light -mx-2 text-sm md:text-base shadow-none"
     >
       {#if $theme.mode === "dark"}
         <svg

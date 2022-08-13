@@ -25,7 +25,7 @@
         type="button"
         aria-label="Go back to previous page"
         on:click={() => window.history.back()}
-        class="bg-white border-2 border-white dark:border-blue-100 dark:bg-blue-100 rounded-sm px-4 py-2 shadow-custom flex gap-2 items-center"
+        class="btn px-4 py-2"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 aspect-auto" viewBox="0 0 20 20" fill="currentColor">
           <path
@@ -41,7 +41,7 @@
         type="button"
         aria-label="Go back to previous page"
         on:click={() => window.history.back()}
-        class="bg-white border-2 border-white dark:border-blue-100 dark:bg-blue-100 rounded-sm px-4 py-2 shadow-custom flex gap-2 items-center"
+        class="btn px-4 py-2"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 aspect-auto" viewBox="0 0 20 20" fill="currentColor">
           <path
