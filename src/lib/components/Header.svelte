@@ -2,9 +2,11 @@
   import { theme, toggleTheme } from "$lib/stores";
 </script>
 
-<header class="px-4 sm:px-6 py-6 bg-white dark:bg-blue-100 shadow-custom">
-  <div class="mx-auto container flex justify-between items-center text-sm md:text-xl">
-    <h1 class="font-bold">Where in the world?</h1>
+<header class="px-4 sm:px-6 md:px-8 py-6 bg-white dark:bg-blue-100 shadow-custom">
+  <div class="mx-auto container flex justify-between items-center text-sm md:text-xl xl:max-w-screen-xl">
+    <a href="/">
+      <h1 class="font-bold">Where in the world?</h1>
+    </a>
     <button
       on:click={toggleTheme}
       type="button"
