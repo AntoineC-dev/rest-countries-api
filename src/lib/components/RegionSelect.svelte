@@ -1,20 +1,14 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  import { filters, updateFilter } from "$lib/stores";
 
   let open: boolean = false;
-  let selected: string = "";
+  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const onToggle = () => {
     open = !open;
   };
-  const onClear = () => {
-    dispatch("filter", { region: "" });
-    selected = "";
-  };
-  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
-  const dispatch = createEventDispatcher<{ filter: { region: string } }>();
+  const onClear = () => updateFilter("region", "");
   const onRegionSelected = (region: string) => {
-    dispatch("filter", { region });
-    selected = region;
+    updateFilter("region", region);
     open = false;
   };
 </script>
@@ -26,7 +20,7 @@
     on:click={onToggle}
     class="flex items-center justify-between px-6 w-52 h-[3.25rem] bg-white dark:bg-blue-100 shadow-custom xs:max-w-md rounded-md"
   >
-    <span>{!selected ? "Filter by Region" : selected}</span>
+    <span>{!$filters.region ? "Filter by Region" : $filters.region}</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class:-rotate-180={open}
@@ -45,9 +39,9 @@
     type="button"
     aria-label="Clear selected region"
     on:click={onClear}
-    disabled={open || !selected}
-    class:opacity-0={open || !selected}
-    class:pointer-events-none={open || !selected}
+    disabled={open || !$filters.region}
+    class:opacity-0={open || !$filters.region}
+    class:pointer-events-none={open || !$filters.region}
     class="absolute right-0 top-1/2 sm:top-full -translate-y-1/2 sm:translate-y-0 translate-x-full sm:translate-x-0 text-xs text-blue-300/30 dark:text-white/30 flex items-center gap-2 p-1 transition-opacity"
   >
     <span>Clear</span>

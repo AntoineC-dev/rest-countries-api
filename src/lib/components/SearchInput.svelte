@@ -1,16 +1,15 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
   import { debounce } from "$lib/helpers";
+  import { filters, updateFilter } from "$lib/stores";
 
-  let value: string = "";
+  let value: string = $filters.name;
 
-  const dispatch = createEventDispatcher<{ search: { name: string } }>();
-  const onChange = debounce(() => dispatch("search", { name: value.trim() }), 250); // Runs only if user stops typing for 500ms
+  const onChange = debounce(() => updateFilter("name", value.trim()), 250); // Runs only if user stops typing for 500ms
   $: value && onChange();
 
   const onClear = () => {
     value = "";
-    dispatch("search", { name: value });
+    updateFilter("name", value);
   };
 </script>
 

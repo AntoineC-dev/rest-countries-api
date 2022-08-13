@@ -22,3 +22,8 @@ export interface CountryComplete extends CountrySimple {
   languages: string; // data.Object.values(languages) -- format
   borderCountries: string[]; // data.borders.foreach((_) => getName)
 }
+
+export interface CountryFilter {
+  name: string;
+  region: string;
+}
