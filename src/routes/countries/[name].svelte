@@ -32,27 +32,29 @@
           {country.name}
         </h2>
         <div class="sm:flex sm:gap-16 sm:justify-between">
-          <div class="flex flex-col leading-snug mt-8 gap-3">
-            <span>Native Names: <span class="font-light">{country.nativeNames}</span></span>
-            <span>Population: <span class="font-light">{country.population}</span></span>
-            <span>Region: <span class="font-light">{country.region}</span></span>
-            <span>Sub Region: <span class="font-light">{country.subregion}</span></span>
-            <span>Capital: <span class="font-light">{country.capital}</span></span>
-          </div>
-          <div class="flex flex-col leading-snug mt-8 gap-3">
-            <span>Top Level Domain: <span class="font-light">{country.tld}</span></span>
-            <span>Currencies: <span class="font-light">{country.currencies}</span></span>
-            <span>Languages: <span class="font-light">{country.languages}</span></span>
-          </div>
+          <ul class="flex flex-col leading-snug mt-8 gap-3">
+            <li>Native Names: <span class="font-light">{country.nativeNames}</span></li>
+            <li>Population: <span class="font-light">{country.population}</span></li>
+            <li>Region: <span class="font-light">{country.region}</span></li>
+            <li>Sub Region: <span class="font-light">{country.subregion}</span></li>
+            <li>Capital: <span class="font-light">{country.capital}</span></li>
+          </ul>
+          <ul class="flex flex-col leading-snug mt-8 gap-3">
+            <li>Top Level Domain: <span class="font-light">{country.tld}</span></li>
+            <li>Currencies: <span class="font-light">{country.currencies}</span></li>
+            <li>Languages: <span class="font-light">{country.languages}</span></li>
+          </ul>
         </div>
         {#if country.borderCountries.length !== 0}
           <div class="flex flex-col text-sm leading-none mt-12 gap-4">
             <h3 class="text-lg leading-none">Border Countries:</h3>
-            <div class="flex items-center gap-2 md:gap-3 flex-wrap">
+            <ul class="flex items-center gap-2 md:gap-3 flex-wrap">
               {#each country.borderCountries as borderCountry (borderCountry)}
-                <a href={`/countries/${borderCountry}`} class="btn px-4 py-1 text-sm font-light">{borderCountry}</a>
+                <li>
+                  <a href={`/countries/${borderCountry}`} class="btn px-4 py-1 text-sm font-light">{borderCountry}</a>
+                </li>
               {/each}
-            </div>
+            </ul>
           </div>
         {/if}
       </div>
