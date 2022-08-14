@@ -1,8 +1,8 @@
 import { api } from "./config.api";
 import type { CountrySimple } from "$lib/types";
-import { formatContryComplete, formatCountrySimple } from "$lib/helpers";
+import { formatBorders, formatContryComplete, formatCountrySimple } from "$lib/helpers";
 
-const fieldsSimple = "flags,name,population,region,capital";
+const fieldsSimple = "flags,name,population,region,capital,cca3";
 export const getAllCountries = async () => {
   try {
     let countries: CountrySimple[] = [];
@@ -17,12 +17,19 @@ export const getAllCountries = async () => {
     throw new Error("Sorry! We could not access the API.");
   }
 };
+
 const fieldsComplete = `${fieldsSimple},nativeName,subregion,tld,currencies,languages,borders`;
-export const getCountryByName = async (param: string) => {
+export const getCountryByCode = async (param: string) => {
   try {
-    const response = await api.get(`name/${param}?fields=${fieldsComplete}`);
-    const data = response.data[0];
-    const countryComplete = await formatContryComplete(data, api);
+    const { data } = await api.get(`alpha/${param}?fields=${fieldsComplete}`);
+    const countryComplete = await formatContryComplete(data);
+    if (data.borders.length !== 0) {
+      let codes = "";
+      [...data.borders].forEach((border) => (codes = codes.concat(border, " ")));
+      codes = codes.trim().replaceAll(" ", ",");
+      const bordersRes = await api.get(`alpha?codes=${codes}`);
+      countryComplete.borders = formatBorders(bordersRes.data);
+    }
     return countryComplete;
   } catch (_) {
     throw new Error(`Sorry! We could not access the data for ${param} on the API.`);

@@ -1,5 +1,4 @@
-import type { AxiosInstance } from "axios";
-import type { CountryComplete, CountrySimple } from "$lib/types";
+import type { CountryBorder, CountryComplete, CountrySimple } from "$lib/types";
 
 export const formatCountrySimple = (data: any): CountrySimple => {
   let nf = new Intl.NumberFormat("en-US");
@@ -9,10 +8,11 @@ export const formatCountrySimple = (data: any): CountrySimple => {
     name: data.name.common,
     population: nf.format(data.population), // Format from 123456789 to 123,456,789
     region: data.region,
+    code: data.cca3,
   };
 };
 
-export const formatContryComplete = async (data: any, apiInstance: AxiosInstance): Promise<CountryComplete> => {
+export const formatContryComplete = (data: any): CountryComplete => {
   const countrySimple = formatCountrySimple(data);
   let props: CountryComplete = {
     ...countrySimple,
@@ -21,7 +21,7 @@ export const formatContryComplete = async (data: any, apiInstance: AxiosInstance
     languages: "",
     currencies: "",
     nativeNames: "",
-    borderCountries: [],
+    borders: [],
   };
   Object.values(data.name.nativeName).forEach((nativeName) => {
     props.nativeNames = props.nativeNames.concat((nativeName as any).common, " ");
@@ -35,12 +35,14 @@ export const formatContryComplete = async (data: any, apiInstance: AxiosInstance
     props.languages = props.languages.concat(language as string, " ");
   });
   props.languages = props.languages.trim().replaceAll(" ", ", ");
-  for (let i = 0; i < data.borders.length; i++) {
-    const border = data.borders[i];
-    const {
-      data: { name },
-    } = await apiInstance.get(`alpha/${border}?fields=name`);
-    props.borderCountries.push(name.common);
-  }
   return props;
+};
+
+export const formatBorders = (data: any): CountryBorder[] => {
+  let borders: CountryBorder[] = [];
+  for (let i = 0; i < data.length; i++) {
+    const borderData = data[i];
+    borders.push({ code: borderData.cca3, name: borderData.name.common });
+  }
+  return borders;
 };

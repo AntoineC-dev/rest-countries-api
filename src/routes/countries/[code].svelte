@@ -45,13 +45,13 @@
             <li>Languages: <span class="font-light">{country.languages}</span></li>
           </ul>
         </div>
-        {#if country.borderCountries.length !== 0}
+        {#if country.borders.length !== 0}
           <div class="flex flex-col text-sm leading-none mt-12 gap-4">
             <h3 class="text-lg leading-none">Border Countries:</h3>
             <ul class="flex items-center gap-2 md:gap-3 flex-wrap">
-              {#each country.borderCountries as borderCountry (borderCountry)}
+              {#each country.borders as border (border.code)}
                 <li>
-                  <a href={`/countries/${borderCountry}`} class="btn px-4 py-1 text-sm font-light">{borderCountry}</a>
+                  <a href={`/countries/${border.code}`} class="btn px-4 py-1 text-sm font-light">{border.name}</a>
                 </li>
               {/each}
             </ul>

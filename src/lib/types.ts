@@ -12,6 +12,12 @@ export interface CountrySimple {
   population: string; // data.population
   region: string; // data.region
   capital: string; // data.capital[0]
+  code: string; // data.cca3
+}
+
+export interface CountryBorder {
+  code: string; // data.cca3
+  name: string; // data.name.common
 }
 
 export interface CountryComplete extends CountrySimple {
@@ -20,7 +26,7 @@ export interface CountryComplete extends CountrySimple {
   tld: string; // data.tld[0]
   currencies: string; // data.Object.values(currencies).name -- format
   languages: string; // data.Object.values(languages) -- format
-  borderCountries: string[]; // data.borders.foreach((_) => getName)
+  borders: CountryBorder[];
 }
 
 export interface CountryFilter {
