@@ -4,10 +4,10 @@
   $: showOverlay = $navigating !== null;
 </script>
 
-<div
+<aside
   class:pointer-events-none={!showOverlay}
   class:opacity-0={!showOverlay}
-  class="absolute top-0 left-0 w-full h-screen bg-white/80 dark:bg-blue-100/80 z-50 transition-opacity duration-150 grid place-content-center"
+  class="fixed top-0 left-0 w-full h-screen bg-white/80 dark:bg-blue-100/80 z-50 transition-opacity duration-150 grid place-content-center"
   on:click|stopPropagation={() => false}
 >
   <svg
@@ -88,4 +88,4 @@
       stroke-width="24"
     /></svg
   >
-</div>
+</aside>
