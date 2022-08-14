@@ -25,6 +25,8 @@
   >
     {#each filteredCountries as country (country.name)}
       <CountryCard {country} />
+    {:else}
+      <p class="text-xl text-center w-full col-span-full py-16">No country matches your filters. 😊</p>
     {/each}
   </div>
 </main>
