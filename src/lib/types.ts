@@ -32,6 +32,7 @@ export interface CountryComplete extends CountrySimple {
 export interface CountriesStore {
   countries: CountryComplete[];
   loading: boolean;
+  error: string | null;
 }
 
 export interface CountryFilter {

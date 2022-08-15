@@ -6,13 +6,12 @@
   import LoadingOverlay from "$lib/components/LoadingOverlay.svelte";
   import ScrollToTop from "$lib/components/ScrollToTop.svelte";
 
-  // Handle light/dark theme
   let root: HTMLElement;
   onMount(async () => {
     root = document.documentElement;
-    await fetchAllCountries();
+    await fetchAllCountries(); // Cache all countries in a svelte store
   });
-  $: root && root.classList.toggle("dark", $theme.mode === "dark");
+  $: root && root.classList.toggle("dark", $theme.mode === "dark"); // Handle theme mode
 </script>
 
 <Header />

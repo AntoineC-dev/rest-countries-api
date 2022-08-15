@@ -1,9 +1,10 @@
 <script context="module" lang="ts">
   import type { Load } from "@sveltejs/kit";
-  export const load: Load = async ({ error }) => {
+  export const load: Load = async ({ error, status }) => {
+    const errMessage = status === 404 ? "Page not found" : error?.message;
     return {
       props: {
-        error: error?.message,
+        error: errMessage,
       },
     };
   };

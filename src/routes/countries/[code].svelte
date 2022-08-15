@@ -3,8 +3,8 @@
   import { filterByCode } from "$lib/helpers";
   import { countriesStore } from "$lib/stores";
 
-  console.log($page.params);
-  const country = filterByCode($page.params["code"] as string, $countriesStore.countries);
+  $: code = $page.params["code"] as string; // Get code from url
+  const country = filterByCode(code, $countriesStore.countries);
 </script>
 
 <svelte:head>
