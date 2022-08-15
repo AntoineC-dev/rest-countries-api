@@ -4,6 +4,7 @@
   import { theme, fetchAllCountries, countriesStore } from "$lib/stores";
   import Header from "$lib/components/Header.svelte";
   import LoadingOverlay from "$lib/components/LoadingOverlay.svelte";
+  import ScrollToTop from "$lib/components/ScrollToTop.svelte";
 
   // Handle light/dark theme
   let root: HTMLElement;
@@ -21,3 +22,5 @@
 {:else}
   <slot />
 {/if}
+
+<ScrollToTop />
