@@ -1,14 +1,11 @@
 <script lang="ts">
-  import type { CountrySimple } from "$lib/types";
   import { filterCountries } from "$lib/helpers";
-  import { filters } from "$lib/stores";
+  import { countriesStore, filters } from "$lib/stores";
   import SearchInput from "$lib/components/SearchInput.svelte";
   import RegionSelect from "$lib/components/RegionSelect.svelte";
   import CountryCard from "$lib/components/CountryCard.svelte";
 
-  export let countries: CountrySimple[];
-
-  $: filteredCountries = filterCountries(countries, $filters);
+  $: filteredCountries = filterCountries($countriesStore.countries, $filters);
 </script>
 
 <svelte:head>

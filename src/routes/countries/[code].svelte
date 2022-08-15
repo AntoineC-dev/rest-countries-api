@@ -1,7 +1,10 @@
 <script lang="ts">
-  import type { CountryComplete } from "$lib/types";
+  import { page } from "$app/stores";
+  import { filterByCode } from "$lib/helpers";
+  import { countriesStore } from "$lib/stores";
 
-  export let country: CountryComplete;
+  console.log($page.params);
+  const country = filterByCode($page.params["code"] as string, $countriesStore.countries);
 </script>
 
 <svelte:head>

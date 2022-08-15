@@ -1,4 +1,4 @@
-import type { CountryBorder, CountryComplete, CountrySimple } from "$lib/types";
+import type { CountryComplete, CountrySimple } from "$lib/types";
 
 export const formatCountrySimple = (data: any): CountrySimple => {
   let nf = new Intl.NumberFormat("en-US");
@@ -36,13 +36,4 @@ export const formatContryComplete = (data: any): CountryComplete => {
   });
   props.languages = props.languages.trim().replaceAll(" ", ", ");
   return props;
-};
-
-export const formatBorders = (data: any): CountryBorder[] => {
-  let borders: CountryBorder[] = [];
-  for (let i = 0; i < data.length; i++) {
-    const borderData = data[i];
-    borders.push({ code: borderData.cca3, name: borderData.name.common });
-  }
-  return borders;
 };

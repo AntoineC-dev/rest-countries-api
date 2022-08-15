@@ -29,6 +29,11 @@ export interface CountryComplete extends CountrySimple {
   borders: CountryBorder[];
 }
 
+export interface CountriesStore {
+  countries: CountryComplete[];
+  loading: boolean;
+}
+
 export interface CountryFilter {
   name: string;
   region: string;

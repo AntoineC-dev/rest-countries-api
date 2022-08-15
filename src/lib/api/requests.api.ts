@@ -1,37 +1,32 @@
 import { api } from "./config.api";
-import type { CountrySimple } from "$lib/types";
-import { formatBorders, formatContryComplete, formatCountrySimple } from "$lib/helpers";
+import type { CountryComplete } from "$lib/types";
+import { formatContryComplete } from "$lib/helpers";
 
-const fieldsSimple = "flags,name,population,region,capital,cca3";
+const getAllCountriesFields =
+  "flags,name,population,region,capital,cca3,nativeName,subregion,tld,currencies,languages,borders";
 export const getAllCountries = async () => {
   try {
-    let countries: CountrySimple[] = [];
-    const response = await api.get(`all?fields=${fieldsSimple}`);
-    const data = [...response.data];
+    let countries: CountryComplete[] = [];
+    let codeForNameRecord: Record<string, string> = {};
+    const res = await api.get(`all?fields=${getAllCountriesFields}`);
+    const data = Array.from(res.data);
     for (let i = 0; i < data.length; i++) {
-      const country = formatCountrySimple(data[i]);
-      countries.push(country);
+      const country = data[i] as any;
+      codeForNameRecord[country.cca3] = country.name.common;
+    }
+    for (let i = 0; i < data.length; i++) {
+      const country = data[i] as any;
+      let countryComplete: CountryComplete = formatContryComplete(country);
+      if (country.borders.length !== 0) {
+        for (let j = 0; j < country.borders.length; j++) {
+          const code = country.borders[j];
+          countryComplete.borders.push({ code, name: codeForNameRecord[code] });
+        }
+      }
+      countries.push(countryComplete);
     }
     return countries;
   } catch (_) {
-    throw new Error("Sorry! We could not access the API.");
-  }
-};
-
-const fieldsComplete = `${fieldsSimple},nativeName,subregion,tld,currencies,languages,borders`;
-export const getCountryByCode = async (param: string) => {
-  try {
-    const { data } = await api.get(`alpha/${param}?fields=${fieldsComplete}`);
-    const countryComplete = await formatContryComplete(data);
-    if (data.borders.length !== 0) {
-      let codes = "";
-      [...data.borders].forEach((border) => (codes = codes.concat(border, " ")));
-      codes = codes.trim().replaceAll(" ", ",");
-      const bordersRes = await api.get(`alpha?codes=${codes}`);
-      countryComplete.borders = formatBorders(bordersRes.data);
-    }
-    return countryComplete;
-  } catch (_) {
-    throw new Error(`Sorry! We could not access the data for ${param} on the API.`);
+    throw new Error("Sorry! We could not fetch all countries from the API.");
   }
 };
